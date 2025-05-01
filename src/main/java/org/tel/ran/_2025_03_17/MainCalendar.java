@@ -1,7 +1,10 @@
 package org.tel.ran._2025_03_17;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 import static org.tel.ran.textFormatting.*;
 
@@ -23,7 +26,43 @@ public class MainCalendar {
         // установка конкретного элемента
         calendar3.set(Calendar.HOUR, 11);
         calendar3.set(Calendar.MINUTE, 50);
+        // получение конкретного элемента
+        System.out.println(calendar3.get(Calendar.HOUR));
+        System.out.println(calendar3.get(Calendar.MONTH));
+        System.out.println("calendar3 = "+calendar3.getTime()); // возврат в Date
 
-        // Добавление месяца
+        // добавление конкретного элемента
+        System.out.println(" --- Добавление конкретного элемента");
+        calendar3.add(Calendar.MONTH, 4);
+        System.out.println(calendar3.get(Calendar.MONTH));
+        System.out.println("calendar3 = "+calendar3.getTime()); // возврат в Date
+
+        calendar3.add(Calendar.MONTH, -4);
+        System.out.println(calendar3.get(Calendar.MONTH));
+        System.out.println("calendar3 = "+calendar3.getTime()); // возврат в Date
+
+        System.out.println();
+        // не меняет связанные значения (не используйте!!!)
+        calendar3.roll(Calendar.MONTH, 4);
+        System.out.println("calendar3 = "+calendar3.getTime()); // возврат в Date
+
+        calendar3.roll(Calendar.DAY_OF_MONTH, -12);
+        System.out.println("calendar3 = "+calendar3.getTime()); // возврат в Date
+
+        System.out.println();
+        // === Форматирование строки при выводе даты Date
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss.SSS");
+        String dateStr = simpleDateFormat.format(new Date());
+        System.out.println(dateStr);
+
+        //Использовать Calendar
+        simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy");
+        dateStr = simpleDateFormat.format(calendar1.getTime());
+        System.out.println(dateStr);
+
+        Locale locale = new Locale("en");
+        simpleDateFormat = new SimpleDateFormat("dd-MMM-yy, d, D, K:m a", locale);
+        dateStr = simpleDateFormat.format(calendar1.getTime());
+        System.out.println(dateStr);
     }
 }
