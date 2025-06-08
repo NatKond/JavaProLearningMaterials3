@@ -41,7 +41,7 @@ public class MainThread {
         RunnableTask runTask1 = new RunnableTask(0, 500_000_000, 13);
         RunnableTask runTask2 = new RunnableTask(500_000_001, 1_000_000_000, 13);
         Thread th1 = new Thread(runTask1, "Task1");
-        Thread th2 = new Thread(runTask2, "Task2");
+        Thread th2 = new Thread(runTask2, "MainShop");
         th1.start();
         th2.start();
         // заставляем главный поток ждать завершения дочерних
